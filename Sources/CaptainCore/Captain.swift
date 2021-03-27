@@ -4,6 +4,7 @@ import PathKit
 
 let CAPTAIN_SCRIPTS_START_ID = "## Captain start"
 let CAPTAIN_SCRIPTS_END_ID = "## Captain end"
+let PATH_SCRIPTS = "PATH=$PATH:/usr/local/bin\n"
 
 public final class Captain {
     public enum CaptainError: Error, CustomStringConvertible {
@@ -347,6 +348,7 @@ public final class Captain {
                 try hookFile.append(
                     string:
                         """
+                    \(PATH_SCRIPTS)
                     \(CAPTAIN_SCRIPTS_START_ID)
                     \(config.propertyValueForName(name: type.rawValue.replacingOccurrences(of: "-", with: "")))
                     \(CAPTAIN_SCRIPTS_END_ID)
